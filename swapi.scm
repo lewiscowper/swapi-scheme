@@ -13,6 +13,6 @@
          (planeturi (update-uri (uri-reference "http://swapi.co/")
                                  path: `(/ "api" "planets" ,planetx)))
          (req (make-request
-               method: 'Get
+               method: 'GET
                uri: planeturi)))
     (with-input-from-request req #f read-json)))
