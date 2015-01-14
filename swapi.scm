@@ -23,7 +23,7 @@
 
 ;; this should be in a get by id method
 
-(define (planet x)
+(define (planets x)
   (let* ((y (->string x))
          (swapiuri (update-uri (uri-reference baseuri)
                                  path: `(/ "api" "planets" ,y)))
@@ -34,7 +34,7 @@
 
 ;; this will hopefully become a generic *-schema method
 
-(define (planet-schema)
+(define (planets-schema)
   (let* ((swapiuri (update-uri (uri-reference baseuri)
                                  path: `(/ "api" "planets" "schema")))
          (req (make-request
