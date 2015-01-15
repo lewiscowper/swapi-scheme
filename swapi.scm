@@ -19,9 +19,9 @@
 ;; this should be in a get by id method
 
 (define (planets #!optional x)
-  (let* ((y (if (null? x) #f (->string x)))
+  (let* ((y (if x (->string x) #f))
          (swapiuri (update-uri (uri-reference baseuri)
-                                 path: `(/ "api" "planets" ,y)))
+                                path: `(/ "api" "planets" ,y)))
          (req (make-request
                method: 'GET
                uri: swapiuri)))
