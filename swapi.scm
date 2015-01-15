@@ -16,15 +16,10 @@
                uri: swapiuri)))
     (with-input-from-request req #f read-json)))
 
-;; this should all be inside a get all method
-
-(define (planets)
-    (with-input-from-request "http://swapi.co/api/planets/" #f read-json))
-
 ;; this should be in a get by id method
 
-(define (planets x)
-  (let* ((y (->string x))
+(define (planets #!optional x)
+  (let* ((y (if (null? x) #f (->string x)))
          (swapiuri (update-uri (uri-reference baseuri)
                                  path: `(/ "api" "planets" ,y)))
          (req (make-request
