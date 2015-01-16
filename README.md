@@ -7,5 +7,6 @@ Once that is done, I'll move on to adding validation that (resource) belongs to 
 
 # History
 
+* (0.1.0) Added get-all, get, and get-schema methods.
 * Named endpoint calls (planets) (planets x) and (planets-schema) for consistency.
 * Initial planet endpoint
