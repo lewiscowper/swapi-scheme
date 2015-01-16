@@ -1,7 +1,7 @@
 # swapico-scheme
 Scheme library for the Star Wars API (http://swapi.co/)
 
-With the 0.1.0 release done, one can now access a list of endpoints, with `(endpoints)`, and then access those endpoints with (get-all "endpoint"), (get "endpoint" id), and (get-schema "endpoint").
+With the 0.1.0 release done, one can now access a list of endpoints, with `(endpoints)`, and then access those endpoints with `(get-all "endpoint")`, `(get "endpoint" id)`, and `(get-schema "endpoint")`.
 
 For 0.1.1, users will be able to access the endpoint without wrapping them in a string.
 
