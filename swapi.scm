@@ -16,22 +16,35 @@
                uri: swapiuri)))
     (with-input-from-request req #f read-json)))
 
-;; this should be in a get by id method
+;; example usage: (getall "films")
 
-(define (planets #!optional x)
-  (let* ((y (if x (->string x) #f))
+(define (get-all endpoint)
+  (let* ((resource (->string endpoint))
+         (endpointuri (update-uri (uri-reference baseuri)
+                                   path: `(/ "api" ,resource)))
+         (req (make-request
+               method: 'GET
+               uri: endpointuri)))
+    (with-input-from-request req #f read-json)))
+
+;; example usage: (get "films" 1)
+
+(define (get endpoint x)
+  (let* ((resource (->string endpoint))
+         (y (->string x))
          (swapiuri (update-uri (uri-reference baseuri)
-                                path: `(/ "api" "planets" ,y)))
+                                path: `(/ "api" ,resource ,y)))
          (req (make-request
                method: 'GET
                uri: swapiuri)))
     (with-input-from-request req #f read-json)))
 
-;; this will hopefully become a generic *-schema method
+;; example usage: (get-schema "films")
 
-(define (planets-schema)
-  (let* ((swapiuri (update-uri (uri-reference baseuri)
-                                 path: `(/ "api" "planets" "schema")))
+(define (get-schema endpoint)
+  (let* ((resource (->string endpoint))
+         (swapiuri (update-uri (uri-reference baseuri)
+                                path: `(/ "api" ,resource "schema")))
          (req (make-request
                method: 'GET
                uri: swapiuri)))
